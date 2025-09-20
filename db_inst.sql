@@ -1,3 +1,7 @@
+create database db_inst;
+
+use db_inst;
+
 create table Cursos (
 id_curso int auto_increment primary key,
 nombre varchar(50),

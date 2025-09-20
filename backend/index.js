@@ -1,8 +1,8 @@
 const express = require ("express")
 const mysql = require ("mysql2")
-const estudiantes = require ("./Router/EstudiantesRouter")
-const cursos = require ("./Router/CursosRouter")
-const inscripciones = require ("./Router/InscripcionesRouter")
+const estudiantes = require ("./Routers/EstudiantesRouter")
+const cursos = require ("./Routers/CursosRouter")
+const inscripciones = require ("./Routers/InscripcionesRouter")
 const cors = require ("cors")
 
 const app = express()
