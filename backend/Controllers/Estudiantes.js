@@ -33,27 +33,29 @@ const mostrarEstudiante = (req, res) => {
 
 
 const crearEstudiante = (req, res) => {
-    const { nombre, edad } = req.body;
+    const { nombre, email } = req.body;
 
-    if (!nombre || !edad) {
+    if (!nombre || !email) {
         return res.status(400).json({
-            error: 'Faltan datos requeridos: nombre y edad'
+            error: 'Faltan datos requeridos: nombre y email'
         });
     }
 
-    
     connection.query(
-        'INSERT INTO Usuarios (nombre, contraseña) VALUES (?, ?)',
-        [nombre, contraseña],
+        'INSERT INTO Estudiantes (nombre, email) VALUES (?, ?)',
+        [nombre, email],
         (error, results) => {
             if (error) {
                 return res.status(500).json({ 
-                    error: 'Error al crear el usuario',
+                    error: 'Error al crear el estudiante',
                     detalle: error.message // muestra el error real
                 });
             }
             res.json({
                 message: "Estudiante creado correctamente",
+                id_estudiante: results.insertId,
+                nombre,
+                email
             });
         }
     );
@@ -63,16 +65,16 @@ const crearEstudiante = (req, res) => {
 
 const editarEstudiante = (req, res) => {
     const { id } = req.params;
-    const { nombre, edad } = req.body;
+    const { nombre, email } = req.body;
 
-    connection.query('UPDATE Estudiantes SET nombre = ?, edad = ? WHERE id_estudiante = ?', [nombre, edad, id], (error, results) => {
+    connection.query('UPDATE Estudiantes SET nombre = ?, email = ? WHERE id_estudiante = ?', [nombre, email, id], (error, results) => {
         if (error) {
             return res.status(500).json({ error: 'Error al editar el estudiante' });
         }
         if (results.affectedRows === 0) {
             return res.status(404).json({ error: 'Estudiante no encontrado' });
         }
-        res.json({ id, nombre, edad });
+        res.json({ id, nombre, email });
     });
 }
 

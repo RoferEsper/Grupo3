@@ -1,10 +1,10 @@
 import React from 'react'
-import Home from '../Components/Home'
+import Estudiantes from '../Components/Estudiantes'
 
 const pages = () => {
   return (
     <div>
-      <Home />
+      <Estudiantes />
     </div>
   )
 }
