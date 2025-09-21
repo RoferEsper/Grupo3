@@ -1,0 +1,158 @@
+/* ===========================
+   RESET GENERAL
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #e0f7fa, #c9f1f7); /* Fondo suave celeste */
+  color: #04353d; /* Texto azul oscuro */
+}
+
+/* ===========================
+   CONTENEDOR PRINCIPAL
+=========================== */
+.app-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+.navbar {
+  background: linear-gradient(135deg, #00b4d8, #48cae4); /* Turquesa a celeste */
+  color: white;
+  padding: 14px 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 180, 216, 0.2);
+  margin-bottom: 25px;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 180, 216, 0.3);
+}
+
+.navbar .brand {
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+
+.navbar .links {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar .links a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.navbar .links a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ===========================
+   GRID PRINCIPAL
+=========================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ===========================
+   CARDS
+=========================== */
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 6px 14px rgba(0, 180, 216, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 180, 216, 0.25);
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  color: #0077b6;
+  border-bottom: 2px solid #00b4d8;
+  padding-bottom: 6px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ===========================
+   BOTONES
+=========================== */
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Botón principal */
+.btn-primary {
+  background: linear-gradient(135deg, #48cae4, #00b4d8);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #00b4d8, #0096c7);
+}
+
+/* Botón secundario */
+.btn-outline {
+  background: transparent;
+  border: 1px solid #48cae4;
+  color: #0096c7;
+}
+
+.btn-outline:hover {
+  background: #caf0f8;
+  border-color: #00b4d8;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

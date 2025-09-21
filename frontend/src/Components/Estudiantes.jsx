@@ -5,6 +5,7 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+
 const Estudiantes = () => {
   const [datos, setData] = useState([]);
   const [form, setForm] = useState({ nombre: '', email: '' });
@@ -66,6 +67,45 @@ const Estudiantes = () => {
 
   return (
     <div>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {datos.map((estudiante) => (
+            <tr key={estudiante.id_estudiante}>
+              <td>{estudiante.id_estudiante}</td>
+              <td>{estudiante.nombre}</td>
+              <td>{estudiante.email}</td>
+              <td>
+                <Button
+                  variant="warning"
+                  size="sm"
+                  onClick={() => handleEdit(estudiante)}
+                  style={{ marginRight: 5 }}
+                >
+                  Editar
+                </Button>
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => handleDelete(estudiante.id_estudiante)}
+                >
+                  Eliminar
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+
+          <hr />
+          
       <h3>{editId ? 'Editar Estudiante' : 'Agregar Estudiante'}</h3>
       <Form onSubmit={handleSubmit} style={{ maxWidth: 400, marginBottom: 20 }}>
         <Form.Group>
@@ -103,42 +143,7 @@ const Estudiantes = () => {
         )}
       </Form>
 
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {datos.map((estudiante) => (
-            <tr key={estudiante.id_estudiante}>
-              <td>{estudiante.id_estudiante}</td>
-              <td>{estudiante.nombre}</td>
-              <td>{estudiante.email}</td>
-              <td>
-                <Button
-                  variant="warning"
-                  size="sm"
-                  onClick={() => handleEdit(estudiante)}
-                  style={{ marginRight: 5 }}
-                >
-                  Editar
-                </Button>
-                <Button
-                  variant="danger"
-                  size="sm"
-                  onClick={() => handleDelete(estudiante.id_estudiante)}
-                >
-                  Eliminar
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+      
     </div>
   );
 };

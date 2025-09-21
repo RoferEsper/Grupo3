@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <h1>Bienvenido a la aplicación</h1>
+      <h1>Bienvenido</h1>
       <HomePage />
     </>
   )
