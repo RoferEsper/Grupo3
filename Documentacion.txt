@@ -1,6 +1,5 @@
 Aqui va toda la documentacion del tp.
 
-
 Guia de pasos – Sistema de Cursado
 La institucion Escuela Municipal BRS desea actualizar su sistema de registro y base de datos de sus alumnos, que actualmente solo existen en papel, a digital para tener una supervisión y control las 24 hs.
 Despues de multiples reuniones, donde se determinó que, el sistema debe contener el registro de alumnos, cursos y de inscripciones por cursos únicamente se procede de la siguiente manera.
@@ -26,4 +25,52 @@ El código utilizado se encuentra en el archivo db_inst.db
 
 Desarrollo de la App
 Se crea una carpeta principal “Grupo 3” donde alojaremos las carpetas “Backend” y “ Frontend”.
-Dentro de Backend se alojarán
+
+
+## 1. Requisitos previos
+- Tener instalado Node.js y npm.
+- Tener instalado MySQL Server.
+- Tener un editor de código (recomendado: VS Code).
+
+## 2. Clonar o descargar el repositorio
+Descarga o clona el repositorio en tu máquina local.
+
+## 3. Configuración de la base de datos
+1. Abre MySQL Workbench, phpMyAdmin o tu cliente favorito.
+2. Ejecuta el script db_inst.sql ubicado en la raíz del proyecto para crear la base de datos y las tablas necesarias.
+
+## 4. Configuración del backend
+1. Abre una terminal y navega a la carpeta backend:
+	
+	cd Grupo3/backend
+	
+2. Instala las dependencias:
+	
+	npm install
+	
+3. Verifica la configuración de la base de datos en Config/dataBase.js (usuario, contraseña, nombre de la base de datos).
+4. Inicia el servidor backend:
+	
+	node index.js
+	
+	El backend debería mostrar "Conectado a la base de datos 👌" si la conexión es exitosa.
+
+## 5. Configuración del frontend
+1. Abre otra terminal y navega a la carpeta frontend:
+	
+	cd Grupo3/frontend
+	
+2. Instala las dependencias:
+	
+	npm install
+	
+3. Inicia el servidor de desarrollo:
+	
+	npm run dev
+	
+4. Abre el navegador y accede a la URL que aparece en la terminal (por defecto: http://localhost:5173).
+
+## 6. Estructura del proyecto
+- backend/: Servidor Node.js con Express y conexión a MySQL.
+- frontend/: Aplicación React para la interfaz de usuario.
+- db_inst.sql: Script para crear la base de datos y tablas.
