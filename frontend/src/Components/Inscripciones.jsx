@@ -28,7 +28,7 @@ const Inscripciones = () => {
     e.preventDefault();
     try {
       if (editId) {
-        await axios.put(ENDPOINTS + URL_INSCRIPCION_ID(editId), {
+        await axios.put(ENDPOINTS + URL_INSCRIPCIONES_ID(editId), {
             id_curso: form.id_curso,
             id_estudiante: form.id_estudiante,
             fecha_inscripcion: form.fecha_inscripcion
@@ -62,7 +62,7 @@ const Inscripciones = () => {
 
   // Editar inscripcion
   const handleEdit = (inscripcion) => {
-  setForm({  id_curso: form.id_curso, id_estudiante: form.id_estudiante, fecha_inscripcion: form.fecha_inscripcion });
+  setForm({  id_curso: inscripcion.id_curso, id_estudiante: inscripcion.id_estudiante, fecha_inscripcion: inscripcion.fecha_inscripcion });
     setEditId(inscripcion.id_inscripcion);
   };
 
@@ -72,17 +72,18 @@ const Inscripciones = () => {
         <thead>
           <tr>
             <th>id_inscripcion</th>
-            <th>id_curso</th>
-            <th>id_estudiante</th>
-            <th>fecha_inscripcion</th>
+            <th>Curso</th>
+            <th>Estudiante</th>
+            <th>Fecha de inscripción</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {datos.map((inscripcion) => (
             <tr key={inscripcion.id_inscripcion}>
               <td>{inscripcion.id_inscripcion}</td>
-              <td>{inscripcion.id_curso}</td>
-              <td>{inscripcion.id_estudiante}</td>
+              <td>{inscripcion.nombre_curso}</td>
+              <td>{inscripcion.nombre_estudiante}</td>
               <td>{inscripcion.fecha_inscripcion}</td>
               <td>
                 <Button
@@ -115,7 +116,7 @@ const Inscripciones = () => {
           <Form.Control
             type="text"
             value={form.id_curso}
-            onChange={e => setForm({ ...form, nombre: e.target.value })}
+            onChange={e => setForm({ ...form, id_curso: e.target.value })}
             required
           />
         </Form.Group>
@@ -124,16 +125,16 @@ const Inscripciones = () => {
           <Form.Control
             type="text"
             value={form.id_estudiante}
-            onChange={e => setForm({ ...form, email: e.target.value })}
+            onChange={e => setForm({ ...form, id_estudiante: e.target.value })}
             required
           />
         </Form.Group>
         <Form.Group>
           <Form.Label>fecha_inscripcion</Form.Label>
           <Form.Control
-            type="number"
+            type="date"
             value={form.fecha_inscripcion}
-            onChange={e => setForm({ ...form, email: e.target.value })}
+            onChange={e => setForm({ ...form, fecha_inscripcion: e.target.value })}
             required
           />
         </Form.Group>

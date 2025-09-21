@@ -6,5 +6,5 @@ export const URL_ESTUDIANTE_ID = (id) => `/estudiante/${id}`; // GET, PUT, DELET
 // Endpoint solo lectura cursos
 export const URL_CURSOS_LIST = '/cursos'; // GET
 export const URL_INSCRIPCIONES_LIST = '/inscripciones'; // GET
-export const URL_INSCRIPCIONES = '/inscripciones';
-export const URL_INSCRIPCIONES_ID = '/inscripciones';
+export const URL_INSCRIPCIONES = '/inscripcion'; // POST
+export const URL_INSCRIPCIONES_ID = (id) => `/inscripcion/${id}`; // GET, PUT, DELETE

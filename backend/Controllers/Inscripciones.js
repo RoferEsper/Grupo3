@@ -6,11 +6,29 @@ const {connection} =require('../Config/dataBase');
 
 
 const mostrarInscripciones = (req, res) => {
-    connection.query('SELECT * FROM Inscripciones', (error, results) => {
+    const sql = `
+        SELECT i.id_inscripcion,
+               i.fecha_inscripcion,
+               e.id_estudiante,
+               e.nombre AS nombre_estudiante,
+               c.id_curso,
+               c.nombre AS nombre_curso
+        FROM Inscripciones i
+        JOIN Estudiantes e ON i.id_estudiante = e.id_estudiante
+        JOIN Cursos c ON i.id_curso = c.id_curso
+    `;
+    connection.query(sql, (error, results) => {
         if (error) {
             return res.status(500).json({ error: 'Error al obtener las inscripciones' });
         }
-        res.json(results);
+        // Formatear la fecha a dd-mm-aaaa
+        const datos = results.map(row => ({
+            ...row,
+            fecha_inscripcion: row.fecha_inscripcion
+                ? new Date(row.fecha_inscripcion).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+                : null
+        }));
+        res.json(datos);
     });
 }
 
@@ -32,23 +50,22 @@ const mostrarInscripcion = (req, res) => {
 
 
 const crearInscripcion = (req, res) => {
-    const { id_estudiante, id_curso } = req.body;
+    const { id_estudiante, id_curso, fecha_inscripcion } = req.body;
 
-    if (!id_estudiante || !id_curso) {
+    if (!id_estudiante || !id_curso || !fecha_inscripcion) {
         return res.status(400).json({
-            error: 'Faltan datos requeridos: id_estudiante y id_curso'
+            error: 'Faltan datos requeridos: id_estudiante, id_curso y fecha_inscripcion'
         });
     }
 
-    
     connection.query(
-        'INSERT INTO Inscripciones (id_estudiante, id_curso) VALUES (?, ?)',
-        [id_estudiante, id_curso],
+        'INSERT INTO Inscripciones (id_estudiante, id_curso, fecha_inscripcion) VALUES (?, ?, ?)',
+        [id_estudiante, id_curso, fecha_inscripcion],
         (error, results) => {
             if (error) {
                 return res.status(500).json({
                     error: 'Error al crear la inscripcion',
-                    detalle: error.message // muestra el error real
+                    detalle: error.message
                 });
             }
             res.json({
@@ -62,17 +79,27 @@ const crearInscripcion = (req, res) => {
 
 const editarInscripcion = (req, res) => {
     const { id } = req.params;
-    const { id_estudiante, id_curso } = req.body;
+    const { id_estudiante, id_curso, fecha_inscripcion } = req.body;
 
-    connection.query('UPDATE Inscripciones SET id_estudiante = ?, id_curso = ? WHERE id_inscripcion = ?', [id_estudiante, id_curso, id], (error, results) => {
-        if (error) {
-            return res.status(500).json({ error: 'Error al editar la inscripcion' });
+    if (!id_estudiante || !id_curso || !fecha_inscripcion) {
+        return res.status(400).json({
+            error: 'Faltan datos requeridos: id_estudiante, id_curso y fecha_inscripcion'
+        });
+    }
+
+    connection.query(
+        'UPDATE Inscripciones SET id_estudiante = ?, id_curso = ?, fecha_inscripcion = ? WHERE id_inscripcion = ?',
+        [id_estudiante, id_curso, fecha_inscripcion, id],
+        (error, results) => {
+            if (error) {
+                return res.status(500).json({ error: 'Error al editar la inscripcion' });
+            }
+            if (results.affectedRows === 0) {
+                return res.status(404).json({ error: 'Inscripcion no encontrada' });
+            }
+            res.json({ id, id_estudiante, id_curso, fecha_inscripcion });
         }
-        if (results.affectedRows === 0) {
-            return res.status(404).json({ error: 'Inscripcion no encontrada' });
-        }
-        res.json({ id, id_estudiante, id_curso });
-    });
+    );
 }
 
 
