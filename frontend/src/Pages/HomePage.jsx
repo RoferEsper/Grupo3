@@ -11,8 +11,8 @@ const HomePage = () => {
       <header className="navbar">
         <div className="brand">Institución</div>
         <nav className="links">
-          <a href="#estudiantes">Estudiantes</a>
           <a href="#cursos">Cursos</a>
+          <a href="#estudiantes">Estudiantes</a>
           <a href="#inscripciones">Inscripciones</a>
         </nav>
       </header>
@@ -22,14 +22,17 @@ const HomePage = () => {
           <h2>Cursos</h2>
           <Cursos />
         </section>
+
         <hr />
+        
       <div className="cards-grid">
         <section id="estudiantes" className="card">
           <h2>Estudiantes</h2>
          <center><Estudiantes /></center>
         </section>
 
-    
+        <hr />
+
         <section id="inscripciones" className="card">
           <h2>Inscripciones</h2>
           <center><Inscripciones /></center>
