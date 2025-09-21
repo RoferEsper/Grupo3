@@ -1,3 +1,7 @@
 export const ENDPOINTS = 'http://localhost:8000';
-export const URL_ESTUDIANTES = '/estudiantes';
-export const URL_CURSOS = '/cursos';
+// Endpoints CRUD estudiantes
+export const URL_ESTUDIANTES_LIST = '/estudiantes'; // GET
+export const URL_ESTUDIANTE = '/estudiante'; // POST
+export const URL_ESTUDIANTE_ID = (id) => `/estudiante/${id}`; // GET, PUT, DELETE
+// Endpoint solo lectura cursos
+export const URL_CURSOS_LIST = '/cursos'; // GET

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { ENDPOINTS } from '../Endpoints/endpoint';
+import { ENDPOINTS, URL_ESTUDIANTES_LIST, URL_ESTUDIANTE, URL_ESTUDIANTE_ID } from '../Endpoints/endpoint';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -12,7 +12,7 @@ const Estudiantes = () => {
 
   const getEstudiantes = async () => {
     try {
-  const response = await axios.get(ENDPOINTS + '/estudiantes');
+  const response = await axios.get(ENDPOINTS + URL_ESTUDIANTES_LIST);
   setData(response.data);
     } catch (error) {
       console.log("Error al obtener los estudiantes", error);
@@ -28,12 +28,12 @@ const Estudiantes = () => {
     e.preventDefault();
     try {
       if (editId) {
-        await axios.put(`${ENDPOINTS}/estudiante/${editId}`, {
+        await axios.put(ENDPOINTS + URL_ESTUDIANTE_ID(editId), {
           nombre: form.nombre,
           email: form.email
         });
       } else {
-        await axios.post(`${ENDPOINTS}/estudiante`, {
+        await axios.post(ENDPOINTS + URL_ESTUDIANTE, {
           nombre: form.nombre,
           email: form.email
         });
@@ -50,7 +50,7 @@ const Estudiantes = () => {
   const handleDelete = async (id) => {
     if (window.confirm('¿Seguro que deseas eliminar este estudiante?')) {
       try {
-  await axios.delete(`${ENDPOINTS}/estudiante/${id}`);
+  await axios.delete(ENDPOINTS + URL_ESTUDIANTE_ID(id));
         getEstudiantes();
       } catch (error) {
         console.log("Error al eliminar el estudiante", error);

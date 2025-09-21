@@ -1,1 +1,29 @@
 Aqui va toda la documentacion del tp.
+
+
+Guia de pasos – Sistema de Cursado
+La institucion Escuela Municipal BRS desea actualizar su sistema de registro y base de datos de sus alumnos, que actualmente solo existen en papel, a digital para tener una supervisión y control las 24 hs.
+Despues de multiples reuniones, donde se determinó que, el sistema debe contener el registro de alumnos, cursos y de inscripciones por cursos únicamente se procede de la siguiente manera.
+Base de datos
+Creación de la base de datos en MySQL Workbench 8.0 CE. La misma cuenta con tres tablas, Cursos, Estudiantes e Inscripciones.
+Las tablas cuentan con los siguientes atributos:
+•	Cursos:
+1.	Id_curso
+2.	Nombre
+3.	Descripción
+•	Estudiantes:
+1.	Id_estudiante
+2.	Nombre
+3.	Email
+•	Inscripciones:
+1.	Id_inscripcion
+2.	Id_estudiante FK
+3.	Id_curso FK
+4.	Fecha_inscripcion (DATE)
+
+El código utilizado se encuentra en el archivo db_inst.db
+
+
+Desarrollo de la App
+Se crea una carpeta principal “Grupo 3” donde alojaremos las carpetas “Backend” y “ Frontend”.
+Dentro de Backend se alojarán
