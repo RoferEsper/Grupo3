@@ -26,13 +26,13 @@ const HomePage = () => {
       <div className="cards-grid">
         <section id="estudiantes" className="card">
           <h2>Estudiantes</h2>
-          <Estudiantes />
+         <center><Estudiantes /></center>
         </section>
 
     
         <section id="inscripciones" className="card">
           <h2>Inscripciones</h2>
-          <Inscripciones />
+          <center><Inscripciones /></center>
         </section>
       </div>
     </div>

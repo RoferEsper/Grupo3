@@ -1,6 +1,3 @@
-/* ===========================
-   RESET GENERAL
-=========================== */
 * {
   margin: 0;
   padding: 0;
@@ -9,24 +6,21 @@
 }
 
 body {
-  background: linear-gradient(135deg, #e0f7fa, #c9f1f7); /* Fondo suave celeste */
-  color: #04353d; /* Texto azul oscuro */
+  background: linear-gradient(135deg, #e0f7fa, #c9f1f7);
+  color: #04353d; 
+;
 }
 
-/* ===========================
-   CONTENEDOR PRINCIPAL
-=========================== */
+
 .app-container {
   max-width: 1200px;
   margin: 30px auto;
   padding: 20px;
 }
 
-/* ===========================
-   NAVBAR
-=========================== */
+
 .navbar {
-  background: linear-gradient(135deg, #00b4d8, #48cae4); /* Turquesa a celeste */
+  background: linear-gradient(135deg, #00b4d8, #48cae4);
   color: white;
   padding: 14px 20px;
   border-radius: 12px;
@@ -66,18 +60,13 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* ===========================
-   GRID PRINCIPAL
-=========================== */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 20px;
 }
 
-/* ===========================
-   CARDS
-=========================== */
+
 .card {
   background: white;
   border-radius: 14px;
@@ -107,9 +96,7 @@ body {
   line-height: 1.5;
 }
 
-/* ===========================
-   BOTONES
-=========================== */
+
 .btn {
   padding: 10px 16px;
   border-radius: 8px;
@@ -120,7 +107,6 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-/* Botón principal */
 .btn-primary {
   background: linear-gradient(135deg, #48cae4, #00b4d8);
   color: white;
@@ -130,7 +116,7 @@ body {
   background: linear-gradient(135deg, #00b4d8, #0096c7);
 }
 
-/* Botón secundario */
+
 .btn-outline {
   background: transparent;
   border: 1px solid #48cae4;
@@ -142,9 +128,7 @@ body {
   border-color: #00b4d8;
 }
 
-/* ===========================
-   RESPONSIVE
-=========================== */
+
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
